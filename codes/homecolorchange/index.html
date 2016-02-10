@@ -1,0 +1,95 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>An Intro to JS Templating</title>
+
+    <!-- basic example from google webfonts -->
+    <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="basics.css">
+
+    <style>
+      body {
+        font-family: dokobook;
+        transition: all 400ms;
+      }
+    </style>
+
+    <!-- basic font icons from fontawesome.io (the instructions for use are on fontawesome.io) -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  </head>
+
+  <body>
+    <header>Menu, title, etc. TK <a href="index.html">[HOME]</a> <a href="about.html" class="active">[ABOUT]</a></header>
+
+    <div>
+        <a href="#" data-bg-color="#445566" class="bg-switch">Trial and Error</a>,
+        <a href="#" data-bg-color="#ff0000" class="bg-switch">Does this work?</a>
+    </div>
+
+    <main>
+      <div class="container">
+        <h1>Hitesh Singhal</h1>
+        <div id="behance-magix" class="clearfix">
+          <!-- insert some HTML via magic JS -->
+            <p>This text would be erased when javascript draws our new content.</p>
+            <img src="https://unsplash.it/200/300/?random">
+
+          <!-- this is the template that each behance thing with use to print to the browser -->
+          <script id="behance-project" type="text/template">
+            {{#projects}}
+            <div class="project" id="{be-{{id}}" data-project-id="{{id}}">
+              <a href="{{url}}">
+                <img src="{{covers.404}}" alt="{{name}}" />
+                <ul class="info clearfix list-reset">
+                  <li class="name"><h2>{{name}}</h2></li>
+                </ul>
+              </a>
+            </div>
+            {{/projects}}
+          </script>
+
+        </div>
+      </div>
+    </main>
+
+    <footer>copyright, or footer-y stuff, etc. tk</footer>
+
+    <!-- All your javascript (other than typekit related stuff) -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- ================================================== -->
+    <!-- ================================================== -->
+    <!-- ================================================== -->
+    <!-- ================================================== -->
+
+    <!-- this is jquery, needed for a bunch of stuff -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <!-- this is mustache, required for the templating to happen -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.2/mustache.min.js"></script>
+
+    <script>
+      var userName = 'hiteshsinghal'
+      var apiKey   = 'fFHPdxhlULHyYAy4ZeSPLBKymH7h8Y6k'
+
+      var url = 'https://www.behance.net/v2/users/' + userName + '/projects/?api_key=' + apiKey +'&callback=?';
+//Get links to change from behance developers, then in endpoints, and then into projects.
+      $.getJSON(url, function(data) {
+        console.log('connected to ' + url + '.');
+        //mustache for projects
+        var template = $('#behance-project').html();
+        var info = Mustache.to_html(template, data);
+        $('#behance-magix').html(info);
+      });
+    </script>
+
+    <script>
+      $('.bg-switch').mouseover(function() {
+          var bgColor = $(this).attr('data-bg-color');
+          $('body').css('background-color', bgColor);
+      });
+    </script>
+
+  </body>
+</html>
