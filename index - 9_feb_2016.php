@@ -15,8 +15,8 @@
     	<?php include("includes/navigation.php"); ?>
         <div class="header">
             <div class="container">
-            	<div class="head-content col-xs-10 col-sm-10 col-md-7 col-lg-6">
-                    <p><span>Hi, my name is Hitesh Singhal. I am a Graphic&nbsp;</span><span>Designer getting my MFA at MICA, Baltimore.</span></p>
+            	<div class="head-content">
+                    <p><span>Hi, my name is Hitesh Singhal. I am Graphic&nbsp;</span><span>Designer getting my MFA at MICA, Baltimore.</span></p>
                     <a href="about.php" class="svg-btn"><img src="assets/images/readmore.svg" /></a>
                     <ul class="header-nav">
                         <li><a data-bg-color="#d2d2c8" class="bg-switch" href="#">Hedonist Monk,</a></li>
@@ -57,8 +57,20 @@
         <div id="dynamic-pages">
           <!-- individual pages will appear to "print" here -->
         </div>
-		<?php include("includes/footer.php"); ?>
-		<?php include("includes/footer_script.php"); ?>
+        <footer class="footer">
+          <div class="container">
+            <div class="col-xs-12 col-sm-6 col-md-8 footer_text">Don't hesitate to <span>drop a line</span> if you want to see more, talk shop, or work togther?</div>
+            <div class="col-xs-12 col-sm-6 col-md-4 footer_link">
+            	<a href="#">@behance</a>
+                <a href="#">@linkedin</a>
+                <a href="#">@instagram</a>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4 copyright">&copy; 2015 Hitesh Kumar Singhal</div>
+          </div>
+        </footer>
+		<script src="assets/js/jquery-1.11.3.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/custom.js"></script>
         <!--this will print in the above "dynamic pages' area -->
 		<script id="project-page" type="text/template">
           <div class="project-page" id="project-{{project.id}}">
@@ -72,7 +84,7 @@
 				{{/project.modules}}
 				<p class="small"></p>
 			</div>
-			<button class="close">Close</button>
+			<button class="close">X</button>
           </div>
         </script>
         <!-- this is jquery, needed for a bunch of stuff -->
@@ -89,12 +101,12 @@
             var template = $('#project-cards').html();
             var info = Mustache.to_html(template, data);
             $('#behance-magix').html(info);
-              console.log('connected to'+url+'.');
+              //console.log('connected to'+url+'.');
 			  $('#behance-magix').append('<div class="three columns col-xs-6 col-sm-6 col-md-4 col-lg-4" id="b{{id}}"><span class="title">Wait, there is more<br>identities, web, print</span></div>');
               $('.project a').click(function(){
                 var projectID=$(this).attr('data-project-id');
-                var projectUrl='https://api.behance.net/v2/projects/'+projectID+'/?api_key='+apiKey+'&callback=?';
-                  console.log(projectUrl+'.');
+                var projectUrl='https://api.behance.net/v2/projects/'+projectID+'/?api_key='+apiKey+'&per_page=8';
+                  //console.log(projectUrl+'.');
                   $.getJSON(projectUrl, function(data){
                     var template = $('#project-page').html();
                     var info = Mustache.to_html(template, data);
@@ -107,6 +119,7 @@
                   });
               });
           });
+		  
         </script>
     </body>
 </html>

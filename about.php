@@ -13,8 +13,8 @@
     	<?php include("includes/navigation.php"); ?>
         <div class="header about-header">
             <div class="container">
-            	<div class="head-content">
-                    <p><span>Hi, my name is Hitesh Singhal. I am Graphic</span><span>Designer getting my MFA at MICA, Baltimore.</span></p>   
+            	<div class="head-content col-xs-10 col-sm-10 col-md-7 col-lg-6">
+                    <p><span>Hi, my name is Hitesh Singhal. I am a Graphic</span><span>Designer getting my MFA at MICA, Baltimore.</span></p>   
             	</div>
             </div>
         </div>
@@ -47,10 +47,10 @@
                             <span class="black_color">Resume</span><br>
                             <a class="white_color" href="#">Download</a><br>
                             <span class="black_color">Email</span><br>
-                            <a class="white_color" href="#">hsinghal@mica.edu</a><br>
+                            <a class="white_color" href="mailto:hsinghal@mica.edu">hsinghal@mica.edu</a><br>
                             <span class="black_color">Phone</span><br>
-                            <a class="white_color" href="#">+1 214 293 0004</a><br>
-                            <a class="white_color" href="#">+91 98105 24751</a><br>
+                            <a class="white_color" href="tel:+12142930004">+1 214 293 0004</a><br>
+                            <a class="white_color" href="tel:+91981052475">+91 98105 24751</a><br>
                         </p>
                     </div>
                 </div>

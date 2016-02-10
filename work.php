@@ -22,7 +22,7 @@
               <!-- this is the template that each behance thing with use to print to the browser -->
               <script id="project-cards" type="text/template">
                 {{#projects}}
-                <div class="project three columns col-xs-12 col-sm-4 col-md-3" id="b{{id}}">
+                <div class="project three columns col-xs-6 col-sm-6 col-md-4 col-lg-4" id="b{{id}}">
                   <a class="wrapping" href="#{{id}}" data-project-id="{{id}}">
                     <img class="img-responsive" src="{{covers.404}}" alt="{{name}}" />
                     <div class="info">
